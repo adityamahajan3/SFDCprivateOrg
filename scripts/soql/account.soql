@@ -10,3 +10,5 @@ SELECT Id FROM Product2
 SELECT Id, ParentId, UserOrGroupId, AccessLevel FROM Book__Share
 
 SELECT Id, name, AccountId FROM Contact WHERE AccountId = null
+
+SELECT Id,Account.Id, Account.Total_Salary__c FROM Contact
