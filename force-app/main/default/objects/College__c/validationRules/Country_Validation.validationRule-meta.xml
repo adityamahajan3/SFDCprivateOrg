@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_Validation</fullName>
+    <active>true</active>
+    <description>College country should only be the following:
+India
+Japan 
+USA 
+Canada
+If country is other than aforementioned then throw error</description>
+    <errorConditionFormula>NOT(
+    ISPICKVAL(Country__c, &quot;India&quot;) ||
+    ISPICKVAL(Country__c, &quot;Japan&quot;) ||
+    ISPICKVAL(Country__c, &quot;USA&quot;) ||
+    ISPICKVAL(Country__c, &quot;Canada&quot;)
+)</errorConditionFormula>
+    <errorDisplayField>Country__c</errorDisplayField>
+    <errorMessage>Sorry the country of your college is other than India, Japan, USA, Canada</errorMessage>
+</ValidationRule>

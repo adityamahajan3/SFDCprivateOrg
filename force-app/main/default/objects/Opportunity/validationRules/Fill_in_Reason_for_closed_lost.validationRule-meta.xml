@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fill_in_Reason_for_closed_lost</fullName>
+    <active>true</active>
+    <description>Prevents a user from moving from closing the opportunity as closed-lost if the field &apos;Reason&apos; is not filled</description>
+    <errorConditionFormula>AND(
+  ISBLANK(Reason__c), 
+  ISPICKVAL( StageName , &quot;Closed Lost&quot;)
+)</errorConditionFormula>
+    <errorMessage>Reason not filled for the opportunity being closed-lost !</errorMessage>
+</ValidationRule>

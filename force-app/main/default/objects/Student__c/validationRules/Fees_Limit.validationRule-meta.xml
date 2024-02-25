@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fees_Limit</fullName>
+    <active>true</active>
+    <description>Fees of college should not exceed 2 lakh</description>
+    <errorConditionFormula>NOT(Fees__c &lt;= 200000 &amp;&amp; Fees__c &gt;= 50000)</errorConditionFormula>
+    <errorDisplayField>Fees__c</errorDisplayField>
+    <errorMessage>Fees of college should not exceed 200000</errorMessage>
+</ValidationRule>

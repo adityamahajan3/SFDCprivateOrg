@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>permanent_email_start_date__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+TRUE,
+DATE(2024,01,29),
+TODAY()
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>permanent email start date</label>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>

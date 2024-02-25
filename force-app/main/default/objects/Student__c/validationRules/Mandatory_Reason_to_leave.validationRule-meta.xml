@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mandatory_Reason_to_leave</fullName>
+    <active>true</active>
+    <description>If an exit date is entered then Reason for leaving college field is mandatory</description>
+    <errorConditionFormula>AND(
+  NOT(ISBLANK( Exit_Date__c )),
+  ISBLANK( Reason_for_leaving__c )
+)</errorConditionFormula>
+    <errorDisplayField>Reason_for_leaving__c</errorDisplayField>
+    <errorMessage>If an exit date is entered then Reason for leaving college field cannot be blank</errorMessage>
+</ValidationRule>

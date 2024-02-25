@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revenue_limitation</fullName>
+    <active>true</active>
+    <description>College revenue should be greater than 1 lakh and less than 10 crore.</description>
+    <errorConditionFormula>NOT( Total_Fees_Collected__c &gt;= 100000 &amp;&amp;  Total_Fees_Collected__c &lt;= 100000000)</errorConditionFormula>
+    <errorMessage>Total fees collected by a college shole not be less than 1 Lakh or more than 10 crore</errorMessage>
+</ValidationRule>
