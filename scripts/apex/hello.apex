@@ -1,3 +1,1 @@
-Id uid = UserInfo.getUserId();
-Integer i =[SELECT COUNT() FROM Opportunity WHERE OwnerId =: uid];
-system.debug(uid);
+feb26Afternoon.validateOrders([SELECT Id FROM Custom_Order__c]);
