@@ -1,5 +1,5 @@
 trigger opportunityTrigger on Opportunity (after insert, after update, after delete) {
-/*
+
     //for synchronus method
     if (Trigger.isAfter) {
         if (Trigger.isInsert || Trigger.isUpdate) {
@@ -10,7 +10,8 @@ trigger opportunityTrigger on Opportunity (after insert, after update, after del
             feb26MorningSync.updateOpportunityCountOnUser(Trigger.old);
         }
     }
-*/
+
+/*
 // For Future Method
     Set<Id> accountIds = new Set<Id>();
     Set<Id> userIds = new Set<Id>();
@@ -33,4 +34,5 @@ trigger opportunityTrigger on Opportunity (after insert, after update, after del
         }
         feb26MorningFuture.updateOpportunityCount(accountIds, userIds);
     }
+    */
 }
