@@ -33,3 +33,7 @@ public class EmailManager {
         return sendResult;
     }
 }
+/*
+EmailManager em = new EmailManager();
+em.sendMail('Your email address', 'Email Subject', 'Email Body');
+ */
