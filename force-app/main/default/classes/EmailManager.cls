@@ -1,6 +1,6 @@
 public class EmailManager {
     // Public method
-    public void sendMail(String address, String subject, String body) {
+    public static void sendMail(String address, String subject, String body) {
         // Create an email message object
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         String[] toAddresses = new String[] {address};
@@ -34,6 +34,5 @@ public class EmailManager {
     }
 }
 /*
-EmailManager em = new EmailManager();
-em.sendMail('Your email address', 'Email Subject', 'Email Body');
+EmailManager.sendMail('Your email address', 'Email Subject', 'Email Body');
  */
