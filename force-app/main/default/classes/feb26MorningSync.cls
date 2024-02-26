@@ -7,7 +7,7 @@ public with sharing class feb26MorningSync {
             }
         }
         List<Account> accountsToUpdate = new List<Account>();
-        Integer opportunityCount = [SELECT COUNT() FROM Opportunity WHERE AccountId = :accountIds];
+        Integer opportunityCount = [SELECT COUNT() FROM Opportunity WHERE AccountId IN :accountIds];
         for (Id accountId : accountIds) {
             accountsToUpdate.add(new Account(Id = accountId, Count_of_Opportunities__c = opportunityCount));
         }
@@ -20,7 +20,7 @@ public with sharing class feb26MorningSync {
                 userIds.add(opp.OwnerId);
         }
         List<User> usersToUpdate = new List<User>();
-        Integer opportunityCount = [SELECT COUNT() FROM Opportunity WHERE OwnerId = :userIds];
+        Integer opportunityCount = [SELECT COUNT() FROM Opportunity WHERE OwnerId IN :userIds];
         for (Id userId : userIds) {
             
             usersToUpdate.add(new User(Id = userId, Count_of_Opportunities__c = opportunityCount));
