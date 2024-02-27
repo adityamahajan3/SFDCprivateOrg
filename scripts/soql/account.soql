@@ -14,3 +14,9 @@ SELECT Id, name, AccountId FROM Contact WHERE AccountId = null
 SELECT Id,Account.Id, Account.Total_Salary__c FROM Contact
 
 SELECT id, name, Count_of_Opportunities__c FROM User WHERE Username = 'aditya.mahajan@aethereus.com'
+
+SELECT Id,Name,IsOrderValid__c,Validation_Errors__c FROM Order 
+
+SELECT Id,Name FROM OrderItem
+
+SELECT Id,ProductCode,Name, Inventory__c FROM Product2
