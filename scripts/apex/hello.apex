@@ -1,1 +1,2 @@
-feb26Afternoon.validateOrders([SELECT Id FROM Custom_Order__c]);
+feb28MorningDeleteOldClosedLostOpp b = new feb28MorningDeleteOldClosedLostOpp();
+Database.executeBatch(b,10);

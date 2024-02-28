@@ -15,6 +15,8 @@ SELECT Id,Account.Id, Account.Total_Salary__c FROM Contact
 
 SELECT id, name, Count_of_Opportunities__c FROM User WHERE Username = 'aditya.mahajan@aethereus.com'
 
+Select Validation_Errors__c, Name, IsOrderValid__c, Owner.Email from Order
+
 SELECT Id,Name,IsOrderValid__c,Validation_Errors__c FROM Order 
 
 SELECT Id,Name FROM OrderItem

@@ -1,17 +1,26 @@
 public with sharing class feb26Afternoon {
-    @future
-    public static void futureMethod(Id orderId){
-        List<Custom_Order__c> orderList = ([Select Validation_Errors__c, Name, IsOrderValid__c, Owner.Email from Custom_Order__c where Id = : orderId]);
-        For(Integer i=0;i<orderList.size();i++){
-            if(orderList[i].IsOrderValid__c){
-                orderList[i].Validation_Errors__c = 'Dear ' + orderList[i].Owner.Name +'\n';
-                orderList[i].Validation_Errors__c += 'Your order is Valid';
+    
+    @future(callout=true)
+    public static void futureMethod(Id Ids){
+    try {
+        Order orderId = ([SELECT Validation_Errors__c, Name, IsOrderValid__c, Owner.Email from Order WHERE Id = : Ids LIMIT 1]);
+        String subject;
+            if(orderId.IsOrderValid__c){
+                orderId.Validation_Errors__c = 'Dear ' + orderId.Owner.Name +'\n';
+                orderId.Validation_Errors__c += 'Your order is Valid';
+                subject ='Order Validated';
+                EmailManager.sendMail(orderId.Owner.Email,subject,orderid.Validation_Errors__c);
+
             }
-            else if(orderList[i].IsOrderValid__c == false){
-                orderList[i].Validation_Errors__c = 'Dear ' + orderList[i].Owner.Name +'\n';
-                orderList[i].Validation_Errors__c += ' Order Invalid : \n'+ orderList[0].Validation_Errors__c;
+            else{
+                orderId.Validation_Errors__c = 'Dear ' + orderId.Owner.Name +'\n';
+                orderId.Validation_Errors__c += ' Order Invalid : \n'+ orderId.Validation_Errors__c;
+                subject ='Order Invalid';
+                EmailManager.sendMail(orderId.Owner.Email,subject,orderid.Validation_Errors__c);
             }
-            EmailManager.sendMail(orderList[i].Owner.Email,'Validation Status',orderList[i].Validation_Errors__c);
+        }
+        catch (Exception e) {
+            System.debug('An error occurred: ' + e.getMessage());
         }
     }
 }
