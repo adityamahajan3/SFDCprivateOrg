@@ -1,5 +1,4 @@
 public with sharing class feb26Afternoon {
-    
     @future(callout=true)
     public static void futureMethod(Id Ids){
     try {
