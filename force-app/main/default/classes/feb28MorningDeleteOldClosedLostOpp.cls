@@ -3,7 +3,7 @@ public class feb28MorningDeleteOldClosedLostOpp implements Database.Batchable<sO
     public Integer recordsProcessed = 0; 
 
     public Database.QueryLocator start(Database.BatchableContext BC) {
-        return Database.getQueryLocator([SELECT Id FROM Opportunity WHERE IsClosed = true AND StageName = 'Closed Lost' AND CreatedDate < LAST_N_DAYS:60]);
+        return Database.getQueryLocator([SELECT Id FROM Opportunity WHERE StageName = 'Closed Lost' AND CreatedDate < LAST_N_DAYS:60]);
     }
 
     public void execute(Database.BatchableContext BC, List<Opportunity> oppList) {
