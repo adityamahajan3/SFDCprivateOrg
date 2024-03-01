@@ -1,2 +1,2 @@
-feb28MorningDeleteOldClosedLostOpp b = new feb28MorningDeleteOldClosedLostOpp();
-Database.executeBatch(b,10);
+ScheduledTimeLogger logger = new ScheduledTimeLogger();
+logger.execute(null);
