@@ -23,7 +23,3 @@ public class LeadProcessor implements Database.Batchable<sObject> {
 		System.debug('Done');
     }
 }
-/*
-LeadProcessor lp = new LeadProcessor();
-Database.executeBatch(lp,10);
-*/
