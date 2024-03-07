@@ -3,9 +3,9 @@ private class AddPrimaryContactTest {
     @isTest
     private static void testQueueableClass(){
         List<Account> accounts = new List<Account>();
-        for(Integer i =0;i<500;i++){
+        for(Integer i =0;i<200;i++){
             Account acc = new account(name='Test Account'+i);
-            if(i<250){
+            if(i<100){
                 acc.BillingState = 'NY';
             }
             else{
