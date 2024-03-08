@@ -1,21 +1,25 @@
 public with sharing class feb26Afternoon {
     @future(callout=true)
     public static void futureMethod(Id Ids){
-    try {
-        Order orderId = ([SELECT Validation_Errors__c, Name, IsOrderValid__c, Owner.Email from Order WHERE Id = : Ids LIMIT 1]);
-        String subject;
-            if(orderId.IsOrderValid__c){
-                orderId.Validation_Errors__c = 'Dear ' + orderId.Owner.Name +'\n';
-                orderId.Validation_Errors__c += 'Your order is Valid';
-                subject ='Order Validated';
-                EmailManager.sendMail(orderId.Owner.Email,subject,orderid.Validation_Errors__c);
-
-            }
-            else{
-                orderId.Validation_Errors__c = 'Dear ' + orderId.Owner.Name +'\n';
-                orderId.Validation_Errors__c += ' Order Invalid : \n'+ orderId.Validation_Errors__c;
-                subject ='Order Invalid';
-                EmailManager.sendMail(orderId.Owner.Email,subject,orderid.Validation_Errors__c);
+        try {
+            List<Order> orders = ([SELECT Id, Validation_Errors__c, Name, IsOrderValid__c, Owner.Email, Owner.Name from Order WHERE Id = : Ids]);
+            System.debug(orders);
+            String subject;
+            String body;
+            for(Order ord :orders){
+                if(ord.IsOrderValid__c){
+                    body = 'Dear '+ord.Owner.Name+', \n';
+                    body+= 'Your order is Valid';
+                    subject ='Order Validated';
+                    EmailManager.sendMail(ord.Owner.Email,subject,body);
+                }
+                else{
+                    body = 'Dear'+ord.Owner.Name+', \n';
+                    body+= ' Order Invalid : \n'+ ord.Validation_Errors__c;
+                    subject ='Order Invalid';
+                    System.debug(body);
+                    EmailManager.sendMail(ord.Owner.Email, subject ,body);
+                }
             }
         }
         catch (Exception e) {
