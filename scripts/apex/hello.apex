@@ -1,3 +1,3 @@
-String cronExp = '0 0 10 1 * ?'; // Run on the 1st of every month at 10 AM
-Mar7UpdateAllOppMonthly m = new Mar7UpdateAllOppMonthly();
-System.schedule('Opportunity Monthly Update', cronExp, m);
+List<Account> acc = [SELECT Id,Name,Industry FROM Account LIMIT 10];
+
+System.debug(Mar7SobjectStringMapping.stringSobjectMap(acc, 'Industry'));
