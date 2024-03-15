@@ -3,5 +3,5 @@ List<Account> acc = [SELECT Name,Industry FROM Account where Industry !=null LIM
 System.debug(Mar7SobjectStringMapping.stringSobjectMap(acc, 'Industry'));
 
 CustomSettingMetadataCustomLabel.addRecord();
-CollegeCollection__c mySetting = [SELECT Id, EmailId__c FROM CollegeCollection__c LIMIT 1];
-System.debug(mySetting);
+CollegeCollection__c mySetting = new CollegeCollection__c();
+System.debug(mySetting.EmailId__c);
