@@ -5,5 +5,6 @@
     "**/.sfdx": true
   },
   "salesforcedx-vscode-core.show-cli-success-msg": false,
-  "salesforcedx-einstein-gpt.enableEinsteinGPT": true
+  "salesforcedx-einstein-gpt.enableEinsteinGPT": true,
+  "simpleBrowser.focusLockIndicator.enabled": true
 }
