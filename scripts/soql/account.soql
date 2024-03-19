@@ -22,3 +22,5 @@ SELECT Id,Name,IsOrderValid__c,Validation_Errors__c FROM Order
 SELECT Id,Name FROM OrderItem
 
 SELECT Id,ProductCode,Name, Inventory__c FROM Product2
+
+SELECT Id, Has_Shipped__c, Order_Number__c,Priority, Subject FROM Order_Event__e
