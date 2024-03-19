@@ -10,8 +10,7 @@ trigger CloudNewsTrigger on Cloud_News__e (after insert) {
             // Create Case to dispatch new team.
             Case cs = new Case();
             cs.Priority = 'High';
-            cs.Subject = 'News team dispatch to ' +
-                event.Location__c;
+            cs.Subject = 'News team dispatch to ' + event.Location__c;
             cs.OwnerId = queue.Id;
             cases.add(cs);
         }
