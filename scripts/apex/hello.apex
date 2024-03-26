@@ -7,3 +7,12 @@ CollegeCollection__c mySetting = new CollegeCollection__c();
 System.debug(mySetting.EmailId__c);
 
 Mar19CreatingEventsClass.multipleEvents();
+
+
+String json = '{'+
+		'    \"id\": \"0015h00001fFpVJAA0\",'+
+		'    \"success\": true,'+
+		'    \"errors\": []'+
+		'}';
+JSON2Apex r = JSON2Apex.parse(json);
+System.debug(r.id);
