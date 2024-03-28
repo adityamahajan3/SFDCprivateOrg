@@ -14,5 +14,5 @@ String json = '{'+
 		'    \"success\": true,'+
 		'    \"errors\": []'+
 		'}';
-JSON2Apex r = JSON2Apex.parse(json);
-System.debug(r.id);
+
+System.debug(JSON2Apex.parse(json));
