@@ -16,3 +16,8 @@ String json = '{'+
 		'}';
 
 System.debug(JSON2Apex.parse(json));
+
+
+List<Integer> values = new List<Integer>{1,2,3,4,5};
+Mar27IterableIteratorBatch M = new Mar27IterableIteratorBatch(values);
+Database.executeBatch(M,2);
