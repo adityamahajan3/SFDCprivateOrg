@@ -4,13 +4,13 @@ public class ScheduledTimeLogger implements Schedulable {
         System.debug('Current Date and Time: ' + Datetime.now());
 
         // Reschedule the job to run again in 5 minutes
-        String jobName = 'ScheduledTimeLogger' + System.currentTimeMillis();
-        String cronExpr = '0 0,5,10,15,20,25,30,35,40,45,50,55 * * * ?'; // Run every 5 minutes
-        Id jobId = System.schedule(jobName, cronExpr, this);
-        System.debug('Next job scheduled with ID: ' + jobId);
+        
     }
 }
 /*
 ScheduledTimeLogger logger = new ScheduledTimeLogger();
-logger.execute(null);
+String jobName = 'ScheduledTimeLogger' + System.currentTimeMillis();
+        String cronExpr = '0 0,5,10,15,20,25,30,35,40,45,50,55 * * * ?'; // Run every 5 minutes
+        Id jobId = System.schedule(jobName, cronExpr, logger);
+        System.debug('Next job scheduled with ID: ' + jobId);
  */
