@@ -1,5 +1,5 @@
 public with sharing class AnimalLocator {
-    public static void getAnimalNameById() {
+    public static String getAnimalNameById(Integer id) {
 
     }
 }
