@@ -1,5 +1,5 @@
 public with sharing class Apr2RESTcallout {
-    public static void getRESTCallout() {
+    public static void makeGetCallout() {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');
@@ -17,7 +17,7 @@ public with sharing class Apr2RESTcallout {
             }
         }
     }
-    public static void postRESTCallout() {
+    public static void makePostCallout() {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');
