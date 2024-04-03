@@ -9,6 +9,18 @@ public class AccountProcessorTest {
         accList.add(acc1);
         }
         insert accList;
+        List<Id> accIds = new List<Id>();
+        for(Account a : accList){
+            accIds.add(a.Id);
+        }
+        List<Contact> conList = new List<Contact>();
+        for(Integer i=0;i<5;i++){
+            Contact con = new Contact();
+            con.LastName='Test Con '+i;
+            con.AccountId = 
+            conList.add(con);
+            }
+            insert conList;
         List<Id> accountIds = new List<Id>();
         for(Account a : accList){
             accountIds.add(a.id);
@@ -19,6 +31,5 @@ public class AccountProcessorTest {
         List<AggregateResult> results = Database.query('SELECT AccountId, COUNT(Id) contactCount FROM Contact WHERE AccountId IN :accountIds GROUP BY Id');
         System.assertEquals(5,results.size());
         system.assertEquals(1,results[0].get('contactCount'));
-       
     }
 }
