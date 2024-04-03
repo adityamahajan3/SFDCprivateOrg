@@ -16,7 +16,7 @@ public class AccountProcessorTest {
         Test.startTest();
         AccountProcessor.countContacts(accountIds);
         Test.stopTest();
-        List<AggregateResult> results = Database.query('SELECT AccountId, COUNT(Id) contactCount FROM Contact WHERE AccountId IN :accountIds GROUP BY AccountId');
+        List<AggregateResult> results = Database.query('SELECT AccountId, COUNT(Id) contactCount FROM Contact WHERE AccountId IN :accountIds GROUP BY Id');
         System.assertEquals(5,results.size());
         system.assertEquals(1,results[0].get('contactCount'));
        
