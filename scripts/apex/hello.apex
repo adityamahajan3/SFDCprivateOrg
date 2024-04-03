@@ -25,4 +25,5 @@ Database.executeBatch(M,5);
  Mar27BatchClass M = new Mar27BatchClass();
  Database.executeBatch(M,1);
 
-Apr2RESTcallout.firstCallout();
+Apr2RESTcallout.getRESTCallout();
+Apr2RESTcallout.postRESTCallout();
