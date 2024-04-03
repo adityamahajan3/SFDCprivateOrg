@@ -15,7 +15,6 @@ public with sharing class AccountProcessor {
             );
             accountsToUpdate.add(acc);
         }
-        
         update accountsToUpdate;
     }
 }
