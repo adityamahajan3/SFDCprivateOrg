@@ -1,5 +1,4 @@
 public with sharing class AccountProcessor {
-
     @future
     public static void countContacts(List<Id> accountIds) {
         // Aggregate query to efficiently count Contacts per Account
