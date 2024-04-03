@@ -1,6 +1,7 @@
 @isTest
 private class AnimalsCalloutsTest {
-    @isTest static  void testGetCallout() {
+    @isTest 
+    static  void testGetCallout() {
         // Create the mock response based on a static resource
         StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
         mock.setStaticResource('GetAnimalResource');
