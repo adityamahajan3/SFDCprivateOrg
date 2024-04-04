@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Dont_go_back_to_privious_stage</fullName>
-    <active>true</active>
+    <active>false</active>
     <description>Prevent user from going back to a previous stage on opportunity once the stage has been crossed</description>
     <errorConditionFormula>CASE(
-  StageName, 
-  &apos;New&apos;, 1, 
-  &apos;Preselection&apos;, 1, 
-  &apos;Prospecting&apos;, 2,
-  &apos;Qualification&apos;, 3,
-  &apos;Needs Analysis&apos;, 4,
-  &apos;Value Proposition&apos;, 5,
-  &apos;Id. Decision Makers&apos;, 6,
-  &apos;Perception Analysis&apos;, 7, 
-  &apos;Proposal/Price Quote&apos;, 8,
-  &apos;Negotiation/Review&apos;, 9,
-  &apos;Closed Won&apos;, 10, 
-  &apos;Closed Lost&apos;, 10, 
-  0  
-) 
+    StageName,
+    &apos;Preselection&apos;, 1,
+    &apos;Prospecting&apos;, 2,
+    &apos;Qualification&apos;, 3,
+    &apos;Needs Analysis&apos;, 4,
+    &apos;Value Proposition&apos;, 5,
+    &apos;Id. Decision Makers&apos;, 6,
+    &apos;Perception Analysis&apos;, 7,
+    &apos;Proposal/Price Quote&apos;, 8,
+    &apos;Negotiation/Review&apos;, 9,
+    &apos;Closed Won&apos;, 10,
+    &apos;Closed Lost&apos;, 10,
+    0
+)
+
 &lt;
+
 CASE(
-  PRIORVALUE(StageName), 
-  &apos;New&apos;, 1, 
-  &apos;Preselection&apos;, 1, 
-  &apos;Prospecting&apos;, 2,
-  &apos;Qualification&apos;, 3,
-  &apos;Needs Analysis&apos;, 4,
-  &apos;Value Proposition&apos;, 5,
-  &apos;Id. Decision Makers&apos;, 6,
-  &apos;Perception Analysis&apos;, 7, 
-  &apos;Proposal/Price Quote&apos;, 8,
-  &apos;Negotiation/Review&apos;, 9,
-  &apos;Closed Won&apos;, 10, 
-  &apos;Closed Lost&apos;, 10, 
-  0 
+    PRIORVALUE(StageName),
+    &apos;Preselection&apos;, 1,
+    &apos;Prospecting&apos;, 2,
+    &apos;Qualification&apos;, 3,
+    &apos;Needs Analysis&apos;, 4,
+    &apos;Value Proposition&apos;, 5,
+    &apos;Id. Decision Makers&apos;, 6,
+    &apos;Perception Analysis&apos;, 7,
+    &apos;Proposal/Price Quote&apos;, 8,
+    &apos;Negotiation/Review&apos;, 9,
+    &apos;Closed Won&apos;, 10,
+    &apos;Closed Lost&apos;, 10,
+    0
 )</errorConditionFormula>
-    <errorMessage>You are prohibited from going back to a previous stage on an opportunity once the stage has been completed</errorMessage>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>You are prohibited from going back to a previous stage on an opportunity record once you once you mark a stage as complete.</errorMessage>
 </ValidationRule>
