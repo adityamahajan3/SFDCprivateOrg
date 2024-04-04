@@ -1,5 +1,5 @@
 public without sharing class AccountTriggerHelper {
-    public static void createOneContact(List<Account> newAcc) {
+    public static void createOneContactForEveryAccount(List<Account> newAcc) {
         List<Contact> conList = new List<Contact>();
         for(Account a:newAcc){
             Contact c = new Contact();
