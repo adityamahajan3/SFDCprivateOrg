@@ -1,11 +1,13 @@
-trigger AccountTrigger on Account (after insert,before delete) {
-    if (Trigger.isAfter) {
-        if (Trigger.isInsert) {
-            System.debug('After Insert: Trigger.new Values: ' + Trigger.new);
-            AccountCreateChildContactTriggerHelper.createChildContact(Trigger.new);
+trigger AccountTrigger on Account (after insert, before delete) {
+    if(Trigger.isBefore){
+        if(Trigger.isDelete){
+            feb21morning.errorBeforeDeleting(Trigger.oldMap);
         }
     }
-    if(Trigger.isBefore && Trigger.isDelete){
-        feb21morning.errorBeforeDeleting(Trigger.oldMap);
+    if (Trigger.isAfter) {
+        if (Trigger.isInsert) {
+            AccountCreateChildContactTriggerHelper.createChildContact(Trigger.new);
+            AccountTriggerHandler.afterInsert(Trigger.new);
+        }
     }
 }
