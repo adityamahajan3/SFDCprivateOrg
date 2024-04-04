@@ -3,7 +3,7 @@
 //
 
 @IsTest
-public class JSON2Apex_Test {
+public class JSON2ApexTest {
 	
 	// This test method should give 100% coverage
 	static testMethod void testParse() {
