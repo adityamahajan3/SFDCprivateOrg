@@ -10,4 +10,13 @@ public without sharing class AccountTriggerHelper {
         }
         insert conList;
     }
+    public static void makeContactOwnerSameAsAccount(List<Account> newAcc){
+        List<Contact> conList = new List<Contact>();
+        for(Account a : newAcc){
+            Contact c = new Contact();
+            c.Owner = a.Owner;
+            conList.add(c);
+        }
+        update conList;
+    }
 }
