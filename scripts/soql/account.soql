@@ -26,3 +26,7 @@ SELECT Id,ProductCode,Name, Inventory__c FROM Product2
 SELECT Id, Has_Shipped__c, Order_Number__c,Priority, Subject FROM Order_Event__e
 
 SELECT Id, Status FROM ApexLog where Id = '07L5h00000CbosMEAR'
+
+SELECT Id, RecordTypeId FROM Opportunity
+
+SELECT Id, name, IsActive, SobjectType FROM RecordType
