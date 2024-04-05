@@ -5,7 +5,7 @@ public without sharing class AccountTriggerHelper {
         for(Account a:newAccList){
             Contact c = new Contact();
             c.FirstName=a.Name;
-            c.LastName=' Added via trigger';
+            c.LastName='Added via trigger';
             c.AccountId=a.Id;
             conList.add(c);
         }
@@ -29,12 +29,16 @@ public without sharing class AccountTriggerHelper {
         for(Account a : newAccList){
             if(a.Industry=='Agriculture'){
                 Opportunity o = new Opportunity();
-                o.Name = a.Name+' Opp Belongs to '+a.Name;
+                o.Name = 'Opp Belongs to '+a.Name;
+                o.StageName = 'Prospecting';
+                o.CloseDate = Date.today().addMonths(2);
+                o.Amount = 10000;
                 o.Description = ' Created because industry is agri';
+                o.AccountId = a.Id;
                 oppList.add(o);
             }
         }
-        upsert oppList;
+        insert oppList;
     }
     /*4) Write a trigger, user should not be able to delete any account with associated contact. */
     public static void errorDeletingAccountHavingContacts(List<Account> oldAccList, Map<Id,Account> oldAccMap) {
