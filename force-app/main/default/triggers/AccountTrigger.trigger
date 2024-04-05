@@ -6,12 +6,12 @@ trigger AccountTrigger on Account (after insert, before delete) {
         }
     }
     if (Trigger.isAfter) {
-        if(Trigger.isUpdate){
-            AccountTriggerHandler.afterUpdate(Trigger.new);
-        }
         if (Trigger.isInsert) {
             //AccountCreateChildContactTriggerHelper.createChildContact(Trigger.new);
             AccountTriggerHandler.afterInsert(Trigger.new);
+        }
+        if(Trigger.isUpdate){
+            AccountTriggerHandler.afterUpdate(Trigger.new);
         }
     }
 }

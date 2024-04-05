@@ -29,7 +29,7 @@ public without sharing class AccountTriggerHelper {
         for(Account a : newAccList){
             if(a.Industry=='Agriculture'){
                 Opportunity o = new Opportunity();
-                o.Name = 'Opp Belongs to '+a.Name;
+                o.Name = 'Opp Belongs to ' + a.Name + System.now();
                 o.StageName = 'Prospecting';
                 o.CloseDate = Date.today().addMonths(2);
                 o.Amount = 10000;
