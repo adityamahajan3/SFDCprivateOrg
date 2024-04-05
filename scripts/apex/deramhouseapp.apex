@@ -7,3 +7,5 @@ o.Name = 'Opp Belongs to ' + System.now();
                     o.Amount = 10000;
                     o.Description = ' Created because industry is Agriculture';
                     insert o;
+
+System.debug(UserInfo.getUserId());
