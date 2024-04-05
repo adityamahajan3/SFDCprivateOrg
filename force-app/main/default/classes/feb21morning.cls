@@ -1,21 +1,22 @@
 public with sharing class feb21morning {
-    /*10.) Write a trigger in which if an account that has related contacts and the user tries to delete that account it throws you an error "Account cannot be deleted". */
+    /*10.) Write a trigger in which if an account that has related contacts and the user tries to delete that account it throws you an error "Account cannot be deleted because it has related to one or more contacts". */
     public static void errorBeforeDeleting(Map<Id,Account> oldAccMap) {
-
-        // Gather IDs of Accounts being deleted
-        Set<Id> accountIds = oldAccMap.keySet();
         
         // Query all Contacts related to these Accounts
-        List<Contact> relatedContacts = [SELECT Id, AccountId FROM Contact WHERE AccountId IN :accountIds];
-        
+        List<Contact> relatedContacts = [SELECT Id, AccountId FROM Contact WHERE AccountId IN :oldAccMap.keySet()];
+        List<Id> relatedaccID = new List<Id>();
         // Check if any Accounts have related Contacts
-        for (Account acc : oldAccMap.values()) {
-            for (Contact con : relatedContacts) {
-                if (acc.Id == con.AccountId) {
-                    acc.addError('Account cannot be deleted'); // throw error to prevent deletion
-                    break; // because even if 1 contact present, stop checking further
-                }
-            }                                 
+        for (Contact con : relatedContacts) {
+            relatedaccID.add(con.AccountId);
+        }
+        for(Id accId :relatedaccID)
+        {
+            if (relatedaccID.contains(accId)) {
+                Account acc = new Account();
+                acc.Id = accId;
+                acc.addError('Account cannot be deleted because it has related to one or more contacts'); // throw error to prevent deletion
+                break; // because even if 1 contact present, stop checking further
+            }                     
         }
     }
     public static void updateAcc(List<Contact> newConList, List<Contact> oldConList, String triggerOperationType){
