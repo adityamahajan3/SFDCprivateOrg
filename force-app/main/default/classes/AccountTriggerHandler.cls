@@ -8,6 +8,6 @@ public without sharing class AccountTriggerHandler {
         AccountTriggerHelper.newOppWhenIndustryAgriAccountCreatedOrUpdated(newAccList);   
     }
     public static void beforeDelete(Map<Id,Account> oldAccMap){
-        AccountTriggerHelper.errorBeforeDeleting(oldAccMap);
+        AccountTriggerHelper.errorDeletingAccountHavingContacts(oldAccMap);
     }
 }

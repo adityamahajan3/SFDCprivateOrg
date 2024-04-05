@@ -37,7 +37,7 @@ public without sharing class AccountTriggerHelper {
         upsert oppList;
     }
     /*4) Write a trigger, user should not be able to delete any account with associated contact. */
-    public static void errorBeforeDeleting(Map<Id,Account> oldAccMap) {
+    public static void errorDeletingAccountHavingContacts(Map<Id,Account> oldAccMap) {
         
         // Query all Contacts related to these Accounts
         List<Contact> relatedContacts = [SELECT Id, AccountId FROM Contact WHERE AccountId IN :oldAccMap.keySet()];
