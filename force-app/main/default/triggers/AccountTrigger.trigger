@@ -8,10 +8,10 @@ trigger AccountTrigger on Account (after insert, before delete) {
     if (Trigger.isAfter) {
         if (Trigger.isInsert) {
             //AccountCreateChildContactTriggerHelper.createChildContact(Trigger.new);
-            AccountTriggerHandler.afterInsert(Trigger.new);
+            AccountTriggerHandler.afterInsert(Trigger.new,Trigger.oldMap);
         }
         if(Trigger.isUpdate){
-            AccountTriggerHandler.afterUpdate(Trigger.new);
+            AccountTriggerHandler.afterUpdate(Trigger.new,Trigger.oldMap);
         }
     }
 }

@@ -24,18 +24,23 @@ public without sharing class AccountTriggerHelper {
         update conList;
     }
     /*3) Write a trigger, to create new Opportunity whenever an account is created/updated for Industry – Agriculture. */
-    public static void newOppWhenIndustryAgriAccountCreatedOrUpdated(List<Account> newAccList){
+    public static void newOppWhenIndustryAgriAccountCreatedOrUpdated(List<Account> newAccList, Map<Id,Account> oldAccMap){
         List<Opportunity> oppList = new List<Opportunity>();
+        Id defaultRecordTypeId = [SELECT Id FROM RecordType WHERE SObjectType = 'Opportunity' AND Name = 'Default'];
+
         for(Account a : newAccList){
             if(a.Industry=='Agriculture'){
-                Opportunity o = new Opportunity();
-                o.Name = 'Opp Belongs to ' + a.Name + System.now();
-                o.StageName = 'Prospecting';
-                o.CloseDate = Date.today().addMonths(2);
-                o.Amount = 10000;
-                o.Description = ' Created because industry is agri';
-                o.AccountId = a.Id;
-                oppList.add(o);
+                if(Trigger.isUpdate && oldAccMap.get(a.Id).Industry != 'Agriculture'){
+                    Opportunity o = new Opportunity();
+                    o.RecordTypeId = defaultRecordTypeId;
+                    o.Name = 'Opp Belongs to ' + a.Name + System.now();
+                    o.StageName = 'Prospecting';
+                    o.CloseDate = Date.today().addMonths(2);
+                    o.Amount = 10000;
+                    o.Description = ' Created because industry is Agriculture';
+                    o.AccountId = a.Id;
+                    oppList.add(o);
+                }
             }
         }
         insert oppList;
@@ -51,7 +56,6 @@ public without sharing class AccountTriggerHelper {
         {
             if (relatedaccID.contains(acc.Id)) {
                 acc.addError('Account cannot be deleted because AccountTriggerHelper.cls record has related to one or more contacts'); // throw error to prevent deletion
-                break; // because even if 1 contact present, stop checking further
             }                             
         } 
     }
