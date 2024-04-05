@@ -29,16 +29,14 @@ public without sharing class AccountTriggerHelper {
 
         for(Account a : newAccList){
             if(a.Industry=='Agriculture'){
-                if(Trigger.isUpdate && oldAccMap.get(a.Id).Industry != 'Agriculture'){
-                    Opportunity o = new Opportunity();
-                    o.Name = 'Opp Belongs to ' + a.Name + System.now();
-                    o.StageName = 'Prospecting';
-                    o.CloseDate = Date.today().addMonths(2);
-                    o.Amount = 10000;
-                    o.Description = ' Created because industry is Agriculture';
-                    o.AccountId = a.Id;
-                    oppList.add(o);
-                }
+                Opportunity o = new Opportunity();
+                o.Name = 'Opp Belongs to ' + a.Name + System.now();
+                o.StageName = 'Prospecting';
+                o.CloseDate = Date.today().addMonths(2);
+                o.Amount = 10000;
+                o.Description = ' Created because industry is Agriculture';
+                o.AccountId = a.Id;
+                oppList.add(o);
             }
         }
         insert oppList;
