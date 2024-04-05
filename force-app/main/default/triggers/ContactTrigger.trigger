@@ -29,7 +29,7 @@ trigger ContactTrigger on Contact (before insert, before update, before delete, 
             System.debug('  '+Trigger.operationType+'After Delete: Trigger.old Values: ' + Trigger.old.size());
             if(Trigger.operationType == System.TriggerOperation.AFTER_DELETE){
                 //feb21morning.updateAcc(Trigger.new,Trigger.old,'AFTER_DELETE');
-                feb22Morning.total(Trigger.old);
+                //feb22Morning.total(Trigger.old);
             }
         }
         if (Trigger.isUndelete) {

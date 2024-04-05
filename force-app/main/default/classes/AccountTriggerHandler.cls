@@ -5,7 +5,6 @@ public without sharing class AccountTriggerHandler {
     }
     public static void afterUpdate(List<Account> newAcc){
         AccountTriggerHelper.makeContactOwnerSameAsAccount(newAcc);
-        AccountTriggerHelper.newOppWhenIndustryAgriAccountCreatedOrUpdated(newAcc);
-        
+        AccountTriggerHelper.newOppWhenIndustryAgriAccountCreatedOrUpdated(newAcc);   
     }
 }
