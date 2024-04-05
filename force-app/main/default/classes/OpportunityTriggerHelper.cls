@@ -2,10 +2,13 @@ public with sharing class OpportunityTriggerHelper {
 /*Write a trigger, only admin can delete closed opportunities and email should be sent to owners for closed won opportunities. */
     public static void adminDeletesClosedOpp(List<Opportunity> oldOppList) {
         if(Trigger.isDelete){
-            List<User> adminUser = [SELECT Id, ProfileId FROM User WHERE ProfileId IN (SELECT Id FROM Profile WHERE Name = 'System Administrator')];
+            Set<Id> adminId = new Set<Id>();
+            Map<Id,Opportunity> adminUser = new Map<Id,Opportunity>([SELECT Id FROM User WHERE ProfileId IN (SELECT Id FROM Profile WHERE Name = 'System Administrator')]);
+            
+            adminId.addAll(adminUser.keySet());
             for(Opportunity o : oldOppList){
                 if(o.StageName == 'Closed Won' || o.StageName == 'Closed Lost'){
-                    if(UserInfo.getUserId() != adminUser[0].Id){
+                    if(!adminId.contains(UserInfo.getUserId())){
                         o.addError('Only System Administrator can delete a closed opportunity');
                     }
                 }
