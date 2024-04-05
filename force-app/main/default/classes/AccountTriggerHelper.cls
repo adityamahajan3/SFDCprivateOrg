@@ -37,20 +37,15 @@ public without sharing class AccountTriggerHelper {
         upsert oppList;
     }
     /*4) Write a trigger, user should not be able to delete any account with associated contact. */
-    public static void errorDeletingAccountHavingContacts(Map<Id,Account> oldAccMap) {
-        
-        // Query all Contacts related to these Accounts
+    public static void errorDeletingAccountHavingContacts(List<Account> oldAccList, Map<Id,Account> oldAccMap) {
         List<Contact> relatedContacts = [SELECT Id, AccountId FROM Contact WHERE AccountId IN :oldAccMap.keySet()];
-        List<Id> relatedaccID = new List<Id>();
-        // Check if any Accounts have related Contacts
+        Set<Id> relatedaccID = new Set<Id>();
         for (Contact con : relatedContacts) {
             relatedaccID.add(con.AccountId);
         }   
-        for(Id accId :relatedaccID)
+        for(Account acc :oldAccList)
         {
-            if (relatedaccID.contains(accId)) {
-                Account acc = new Account();
-                acc.Id = accId;
+            if (relatedaccID.contains(acc.Id)) {
                 acc.addError('Account cannot be deleted because it has related to one or more contacts'); // throw error to prevent deletion
                 break; // because even if 1 contact present, stop checking further
             }                             

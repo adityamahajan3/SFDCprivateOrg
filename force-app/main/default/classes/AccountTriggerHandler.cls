@@ -7,7 +7,7 @@ public without sharing class AccountTriggerHandler {
         AccountTriggerHelper.makeContactOwnerSameAsAccount(newAccList);
         AccountTriggerHelper.newOppWhenIndustryAgriAccountCreatedOrUpdated(newAccList);   
     }
-    public static void beforeDelete(Map<Id,Account> oldAccMap){
-        AccountTriggerHelper.errorDeletingAccountHavingContacts(oldAccMap);
+    public static void beforeDelete(List<Account> oldAccList, Map<Id,Account> oldAccMap){
+        AccountTriggerHelper.errorDeletingAccountHavingContacts(oldAccList,oldAccMap);
     }
 }

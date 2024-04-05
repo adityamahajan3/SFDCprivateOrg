@@ -1,7 +1,7 @@
 trigger AccountTrigger on Account (after insert, before delete) {
     if(Trigger.isBefore){
         if(Trigger.isDelete){
-            feb21morning.errorBeforeDeleting(Trigger.oldMap);
+            //feb21morning.errorBeforeDeleting(Trigger.oldMap);
             AccountTriggerHandler.beforeDelete(Trigger.oldMap);
         }
     }
