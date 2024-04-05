@@ -3,11 +3,11 @@ trigger opportunityTrigger on Opportunity (after insert, after update, after del
     //for synchronus method
     if (Trigger.isAfter) {
         if (Trigger.isInsert || Trigger.isUpdate) {
-            feb26MorningSync.updateOpportunityCountOnAccount(Trigger.new);
-            feb26MorningSync.updateOpportunityCountOnUser(Trigger.new);
+            //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.new);
+            //feb26MorningSync.updateOpportunityCountOnUser(Trigger.new);
         } else if (Trigger.isDelete) {
-            feb26MorningSync.updateOpportunityCountOnAccount(Trigger.old);
-            feb26MorningSync.updateOpportunityCountOnUser(Trigger.old);
+            //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.old);
+            //feb26MorningSync.updateOpportunityCountOnUser(Trigger.old);
         }
     }
 

@@ -26,13 +26,11 @@ public without sharing class AccountTriggerHelper {
     /*3) Write a trigger, to create new Opportunity whenever an account is created/updated for Industry – Agriculture. */
     public static void newOppWhenIndustryAgriAccountCreatedOrUpdated(List<Account> newAccList, Map<Id,Account> oldAccMap){
         List<Opportunity> oppList = new List<Opportunity>();
-        //List<RecordType> RTI = [SELECT Id FROM RecordType WHERE SObjectType = 'Opportunity' AND Name = 'Default' LIMIT 1];
 
         for(Account a : newAccList){
             if(a.Industry=='Agriculture'){
                 if(Trigger.isUpdate && oldAccMap.get(a.Id).Industry != 'Agriculture'){
                     Opportunity o = new Opportunity();
-                    //o.RecordTypeId = RTI[0].Id;
                     o.Name = 'Opp Belongs to ' + a.Name + System.now();
                     o.StageName = 'Prospecting';
                     o.CloseDate = Date.today().addMonths(2);
