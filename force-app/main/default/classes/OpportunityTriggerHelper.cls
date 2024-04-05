@@ -1,6 +1,6 @@
 public with sharing class OpportunityTriggerHelper {
 /*Write a trigger, only admin can delete closed opportunities and email should be sent to owners for closed won opportunities. */
-    public static void adminDeletesClosedOpp(List<Opportunity> oldOppList) {
+    /*public static void adminDeletesClosedOpp(List<Opportunity> oldOppList) {
         if(Trigger.isDelete){
             Set<Id> adminId = new Set<Id>();
             Map<Id,Opportunity> adminUser = new Map<Id,Opportunity>([SELECT Id FROM User WHERE ProfileId IN (SELECT Id FROM Profile WHERE Name = 'System Administrator')]);
@@ -14,7 +14,7 @@ public with sharing class OpportunityTriggerHelper {
                 }
             }
         }
-    }
+    }*/
     public static void sendEmailToClosedWonOpp(List<Opportunity> newOppList, Map<Id, Opportunity> oldOppMap){
         for(Opportunity o : newOppList){
             if(o.StageName != oldOppMap.get(o.Id).StageName){

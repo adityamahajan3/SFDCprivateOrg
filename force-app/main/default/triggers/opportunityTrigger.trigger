@@ -1,4 +1,4 @@
-trigger OpportunityTrigger on Opportunity (after update, before delete) {
+trigger opportunityTrigger on Opportunity (after update, before delete) {
     if(Trigger.isBefore){
         if(Trigger.isInsert){
 
