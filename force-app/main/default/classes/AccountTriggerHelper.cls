@@ -46,7 +46,7 @@ public without sharing class AccountTriggerHelper {
         for(Account acc :oldAccList)
         {
             if (relatedaccID.contains(acc.Id)) {
-                acc.addError('Account cannot be deleted because it has related to one or more contacts'); // throw error to prevent deletion
+                acc.addError('Account cannot be deleted because AccountTriggerHelper.cls record has related to one or more contacts'); // throw error to prevent deletion
                 break; // because even if 1 contact present, stop checking further
             }                             
         } 
