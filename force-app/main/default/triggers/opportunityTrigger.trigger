@@ -7,7 +7,7 @@ trigger opportunityTrigger on Opportunity (after update, before delete) {
 
         }
         if(Trigger.isDelete){
-            OpportunityTriggerHandler.beforeDelete(Trigger.old);
+            //OpportunityTriggerHandler.beforeDelete(Trigger.old);
         }
     }
     if (Trigger.isAfter) {
