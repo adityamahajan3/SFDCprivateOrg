@@ -1,4 +1,4 @@
-trigger opportunityTrigger on Opportunity (after insert, after update, before delete) {
+trigger opportunityTrigger on Opportunity (after update, before delete) {
     if(Trigger.isBefore){
         if(Trigger.isInsert){
 
@@ -18,6 +18,7 @@ trigger opportunityTrigger on Opportunity (after insert, after update, before de
         if(Trigger.isUpdate) {
             //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.new);
             //feb26MorningSync.updateOpportunityCountOnUser(Trigger.new);
+            OpportunityTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap);
         }
         if (Trigger.isDelete) {
             //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.old);
