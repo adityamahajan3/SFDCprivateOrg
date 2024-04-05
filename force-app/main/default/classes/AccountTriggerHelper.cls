@@ -24,19 +24,17 @@ public without sharing class AccountTriggerHelper {
         update conList;
     }
     /*3) Write a trigger, to create new Opportunity whenever an account is created/updated for Industry – Agriculture. */
-    public static void newOppWhenIndustryAgriAccountCreatedOrUpdated(List<Account> newAccList, Map<Id,Account> oldAccMap){
+    public static void newOppWhenIndustryAgriAccountCreatedOrUpdated(List<Account> newAccList, Map<Id, Account> oldAccMap) {
         List<Opportunity> oppList = new List<Opportunity>();
-
         for(Account a : newAccList){
-            if(a.Industry=='Agriculture'){
-                Opportunity o = new Opportunity();
-                o.Name = 'Opp Belongs to ' + a.Name + System.now();
-                o.StageName = 'Prospecting';
-                o.CloseDate = Date.today().addMonths(2);
-                o.Amount = 10000;
-                o.Description = ' Created because industry is Agriculture';
-                o.AccountId = a.Id;
-                oppList.add(o);
+            if (a.Industry == 'Agriculture' && (oldAccMap == null || a.Industry != oldAccMap.get(a.Id).Industry) ) {                Opportunity opp = new Opportunity();
+                opp.Name = 'Opp Belongs to ' + a.Name + ' ' + System.now();
+                opp.StageName = 'Prospecting';
+                opp.CloseDate = Date.today().addMonths(2);
+                opp.Amount = 10000;
+                opp.Description = ' Created because industry is Agriculture';
+                opp.AccountId = a.Id;
+                oppList.add(opp);
             }
         }
         insert oppList;

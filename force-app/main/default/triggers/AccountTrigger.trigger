@@ -1,4 +1,4 @@
-trigger AccountTrigger on Account (after insert, before delete) {
+trigger AccountTrigger on Account (after insert, after update, before delete) {
     if(Trigger.isBefore){
         if(Trigger.isDelete){
             //feb21morning.errorBeforeDeleting(Trigger.oldMap);
@@ -8,10 +8,10 @@ trigger AccountTrigger on Account (after insert, before delete) {
     if (Trigger.isAfter) {
         if (Trigger.isInsert) {
             //AccountCreateChildContactTriggerHelper.createChildContact(Trigger.new);
-            AccountTriggerHandler.afterInsert(Trigger.new,Trigger.oldMap);
+            AccountTriggerHandler.afterInsert(Trigger.new, Trigger.oldMap);
         }
         if(Trigger.isUpdate){
-            AccountTriggerHandler.afterUpdate(Trigger.new,Trigger.oldMap);
+            AccountTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap);
         }
     }
 }

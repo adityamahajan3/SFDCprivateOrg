@@ -1,16 +1,33 @@
-trigger opportunityTrigger on Opportunity (after insert, after update, after delete) {
+trigger opportunityTrigger on Opportunity (after insert, after update, before delete) {
+    if(Trigger.isBefore){
+        if(Trigger.isInsert){
 
-    //for synchronus method
+        }
+        if(Trigger.isUpdate){
+
+        }
+        if(Trigger.isDelete){
+            OpportunityTriggerHandler.beforeDelete(Trigger.old);
+        }
+    }
     if (Trigger.isAfter) {
-        if (Trigger.isInsert || Trigger.isUpdate) {
+        if (Trigger.isInsert){
             //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.new);
             //feb26MorningSync.updateOpportunityCountOnUser(Trigger.new);
-        } else if (Trigger.isDelete) {
+        }
+        if(Trigger.isUpdate) {
+            //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.new);
+            //feb26MorningSync.updateOpportunityCountOnUser(Trigger.new);
+        }
+        if (Trigger.isDelete) {
             //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.old);
             //feb26MorningSync.updateOpportunityCountOnUser(Trigger.old);
         }
-    }
+        if(Trigger.isUndelete){
 
+        }
+    }
+    
 /*
 // For Future Method
     Set<Id> accountIds = new Set<Id>();

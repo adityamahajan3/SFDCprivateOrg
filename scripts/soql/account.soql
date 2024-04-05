@@ -30,3 +30,7 @@ SELECT Id, Status FROM ApexLog where Id = '07L5h00000CbosMEAR'
 SELECT Id, RecordTypeId FROM Opportunity
 
 SELECT Id, name, IsActive, SobjectType FROM RecordType
+
+SELECT Id, Name, ProfileId FROM User
+
+SELECT Id, name, UserType FROM Profile
