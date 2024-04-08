@@ -35,6 +35,12 @@ SELECT Id, Name, ProfileId FROM User
 
 SELECT Id, name, UserType FROM Profile
 
+SELECT Id, Type, Name  FROM Group WHERE Name = 'Admins' AND Type = 'Regular' LIMIT 1
+
+SELECT UserOrGroupId, GroupId FROM GroupMember
+
 SELECT Id FROM User WHERE ProfileId IN (SELECT Id FROM Profile WHERE Name = 'System Administrator')
 
 SELECT Id, No_of_Contacts__c, (SELECT Id FROM Contacts) FROM Account
+
+SELECT Id, Name, UserType FROM Profile
