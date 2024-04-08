@@ -17,14 +17,19 @@ public with sharing class OpportunityTriggerHelper {
         }
     }*/
     public static void sendEmailToClosedWonOpp(List<Opportunity> newOppList, Map<Id, Opportunity> oldOppMap){
+        Set<Id> ownerIds = new Set<Id>();
         for(Opportunity o : newOppList){
-            System.debug(o);
+            ownerIds.add(o.OwnerId);
+        }
+        Map<Id, User> EmailRecipientMap = new Map<Id, User>([SELECT Id, Name, Email FROM User WHERE Id IN: ownerIds]);
+        for(Opportunity o : newOppList){
             if(o.StageName != oldOppMap.get(o.Id).StageName){
                 System.debug('Old StageName: '+oldOppMap.get(o.Id).StageName);
+                User EmailRecipient = EmailRecipientMap.get(o.OwnerId);
                 if(o.StageName=='Closed Won'){
                     System.debug('New StageName: '+o.StageName);
-                    System.debug('Owner Email: '+o.Owner.Email+'\nOwner Name: '+o.Owner.Name);
-                    EmailManager.sendMail(o.Owner.Email, 'Opportunity update', 'Dear '+o.Owner.Name+'\n Your Opportunity ' + o.Name + ' has been updated to Closed Won ! \nCongratulations !');
+                    System.debug('Owner Email: '+EmailRecipient.Email+'\nOwner Name: '+EmailRecipient.Name);
+                    EmailManager.sendMail(EmailRecipient.Email, 'Opportunity update', 'Dear '+EmailRecipient.Name+'\nYour Opportunity ' + o.Name + ' has been updated to '+o.StageName+' ! \nCongratulations !');
                 }
             }
         }
