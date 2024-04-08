@@ -8,6 +8,7 @@ public with sharing class OpportunityTriggerHelper {
             adminId.addAll(adminUser.keySet());
             for(Opportunity o : oldOppList){
                 if(o.StageName == 'Closed Won' || o.StageName == 'Closed Lost'){
+                    System.debug(UserInfo.getUserId());
                     if(!adminId.contains(UserInfo.getUserId())){
                         o.addError('Only System Administrator can delete a closed opportunity');
                     }
