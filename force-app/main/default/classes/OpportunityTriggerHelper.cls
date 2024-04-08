@@ -15,7 +15,7 @@ public with sharing class OpportunityTriggerHelper {
             }
         }
     }
-    /*5)email should be sent to owners for closed won opportunities. */
+    /*5)Email should be sent to owners for closed won opportunities. */
     public static void sendEmailToClosedWonOpp(List<Opportunity> newOppList, Map<Id, Opportunity> oldOppMap){
         Set<Id> ownerIds = new Set<Id>();
         for(Opportunity o : newOppList){
