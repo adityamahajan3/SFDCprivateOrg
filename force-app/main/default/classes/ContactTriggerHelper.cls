@@ -5,6 +5,7 @@ public with sharing class ContactTriggerHelper {
         List<Contact> ContactsCount = [SELECT AccountId FROM Contact WHERE AccountId IN (SELECT Id FROM Account)];
         for(Contact c : newConList){
             Account a = new Account();
+            a.Id = c.AccountId;
             a.No_of_Contacts__c = ContactsCount.Size();
             accToUpdate.add(a);
         }
