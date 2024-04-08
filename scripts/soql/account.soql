@@ -34,3 +34,5 @@ SELECT Id, name, IsActive, SobjectType FROM RecordType
 SELECT Id, Name, ProfileId FROM User
 
 SELECT Id, name, UserType FROM Profile
+
+SELECT Id FROM User WHERE ProfileId IN (SELECT Id FROM Profile WHERE Name = 'System Administrator')
