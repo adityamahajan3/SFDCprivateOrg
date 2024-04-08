@@ -16,7 +16,6 @@ public with sharing class OpportunityTriggerHelper {
         }
     }*/
     public static void sendEmailToClosedWonOpp(List<Opportunity> newOppList, Map<Id, Opportunity> oldOppMap){
-        List<Opportunity> oppList = [SELECT Id FROM User WHERE ];
         for(Opportunity o : newOppList){
             if(o.StageName != oldOppMap.get(o.Id).StageName){
                 if(o.StageName=='Closed Won'){
