@@ -1,14 +1,14 @@
 trigger ContactTrigger on Contact (before insert, before update, before delete, after insert, after update, after delete, after undelete) {
     if (Trigger.isBefore) {
         if (Trigger.isInsert) {
-            System.debug('Before Insert: Trigger.new Values: ' + Trigger.new);
+            //System.debug('Before Insert: Trigger.new Values: ' + Trigger.new);
         }
         if (Trigger.isUpdate) {
-            System.debug('Before Update: Trigger.new Values: ' + Trigger.new);
-            System.debug('Before Update: Trigger.old Values: ' + Trigger.old);
+            //System.debug('Before Update: Trigger.new Values: ' + Trigger.new);
+            //System.debug('Before Update: Trigger.old Values: ' + Trigger.old);
         }
         if (Trigger.isDelete) {
-            System.debug('Before Delete: Trigger.old Values: ' + Trigger.old);
+            //System.debug('Before Delete: Trigger.old Values: ' + Trigger.old);
         }
     }
     if (Trigger.isAfter) {
