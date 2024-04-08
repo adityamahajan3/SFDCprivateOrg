@@ -53,5 +53,4 @@ public without sharing class AccountTriggerHelper {
             }                             
         } 
     }
-
 }

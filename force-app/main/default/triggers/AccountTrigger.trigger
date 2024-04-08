@@ -12,6 +12,13 @@ trigger AccountTrigger on Account (after insert, after update, before delete) {
         }
         if(Trigger.isUpdate){
             AccountTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap);
+            //AccountTrialTriggerHandler.afterUpdate(Trigger.newMap);
+        }
+        if(Trigger.isDelete){
+
+        }
+        if(Trigger.isUndelete){
+            
         }
     }
 }
