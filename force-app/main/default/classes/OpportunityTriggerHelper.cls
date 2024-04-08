@@ -22,7 +22,7 @@ public with sharing class OpportunityTriggerHelper {
                 System.debug('Old StageName: '+oldOppMap.get(o.Id).StageName);
                 if(o.StageName=='Closed Won'){
                     System.debug('New StageName: '+o.StageName);
-                    System.debug('Owner Email: '+Owner.Email+'\nOwner Name: '+Owner.Name);
+                    System.debug('Owner Email: '+o.Owner.Email+'\nOwner Name: '+o.Owner.Name);
                     EmailManager.sendMail(o.Owner.Email, 'Opportunity update', 'Dear '+o.Owner.Name+'\n Your Opportunity ' + o.Name + ' has been updated to Closed Won ! \nCongratulations !');
                 }
             }
