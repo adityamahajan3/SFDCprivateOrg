@@ -18,7 +18,10 @@ public with sharing class OpportunityTriggerHelper {
     public static void sendEmailToClosedWonOpp(List<Opportunity> newOppList, Map<Id, Opportunity> oldOppMap){
         for(Opportunity o : newOppList){
             if(o.StageName != oldOppMap.get(o.Id).StageName){
+                System.debug('Old StageName: '+oldOppMap.get(o.Id).StageName);
                 if(o.StageName=='Closed Won'){
+                    System.debug('New StageName: '+o.StageName);
+                    System.debug('Owner Email: '+o.Owner.Email+'\nOwner Name: '+o.Owner.Name);
                     EmailManager.sendMail(o.Owner.Email, 'Opportunity update', 'Dear '+o.Owner.Name+'\n Your Opportunity ' + o.Name + ' has been updated to Closed Won ! \nCongratulations !');
                 }
             }
