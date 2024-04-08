@@ -4,7 +4,7 @@ trigger UserTrigger on User (after insert) {
             UserTriggerHandler.afterInsert(Trigger.newMap);
         }
         if(Trigger.isUpdate){
-            UserTriggerHandler.afterUpdate(Trigger.newMap, Trigger.oldMap);
+            UserTriggerHandler.afterUpdate(Trigger.newMap);
         }
     }
 }
