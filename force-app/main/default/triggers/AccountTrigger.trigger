@@ -11,7 +11,7 @@ trigger AccountTrigger on Account (after insert, after update, before delete) {
             AccountTriggerHandler.afterInsert(Trigger.new, Trigger.oldMap);
         }
         if(Trigger.isUpdate){
-            AccountTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap);
+            AccountTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap, Trigger.newMap);
             //AccountTrialTriggerHandler.afterUpdate(Trigger.newMap);
         }
         if(Trigger.isDelete){
