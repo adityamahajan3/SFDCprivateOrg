@@ -3,7 +3,7 @@
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
  * @last modified on  : 04-10-2024
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified by  : aditya.mahajan@aethereus.com
 **/
 public with sharing class UserTriggerHelper {
     /* 8) Write a trigger, whenever a new active User having profile “System Administrator” is inserted, add the user to the public group “Admins” */
