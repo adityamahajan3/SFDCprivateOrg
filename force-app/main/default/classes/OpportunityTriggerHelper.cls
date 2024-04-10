@@ -62,8 +62,8 @@ public with sharing class OpportunityTriggerHelper {
     /* 11) Write an Apex trigger named “OpportunityValidationTrigger” that fires before update and enforces some conditions. If any of the conditions are violated, the trigger should add the appropriate custom error messages to the Opportunity record.
             in this case an opportunity Stage cannot be updated to "Closed Won" if its old amount or new amount is less than 10,000*/
     public static void opportunityValidationTrigger(Map<Id,Opportunity> newOppMap, Map<Id,Opportunity> oldOppMap){
-        for(Opportunity o : oldOppMap.values()){
-            if((newOppMap.get(o.Id).Amount<10000))
+        for(Opportunity o : newOppMap.values()){
+            if(o.Amount<10000))
             {
                 o.addError('Opportunity Amount cannot be less than 10,000 if it is to be updated to Closed Won');
             }
