@@ -29,7 +29,7 @@ public with sharing class UserTriggerHelper {
         List<GroupMember> gmAddList = new List<GroupMember>();
         Set<Id> userToBeRemoved = new Set<Id>();
         for(User u : newUserMap.values()){
-            if(u.ProfileId != adminProfile.Id && u.isActive != true){
+            if(u.ProfileId != adminProfile.Id && u.isActive == false){
                 userToBeRemoved.add(u.Id);
             }
         }
