@@ -5,7 +5,7 @@
  * @last modified on  : 04-10-2024
  * @last modified by  : aditya.mahajan@aethereus.com
 **/
-trigger OpportunityTrigger on Opportunity (after update, before delete) {
+trigger OpportunityTrigger on Opportunity (before update, before delete, after update) {
     if(Trigger.isBefore){
         if(Trigger.isInsert){
 
