@@ -1,10 +1,17 @@
+/**
+ * @description       : 
+ * @author            : aditya.mahajan@aethereus.com
+ * @group             : 
+ * @last modified on  : 04-10-2024
+ * @last modified by  : aditya.mahajan@aethereus.com
+**/
 trigger OpportunityTrigger on Opportunity (after update, before delete) {
     if(Trigger.isBefore){
         if(Trigger.isInsert){
 
         }
         if(Trigger.isUpdate){
-
+            OpportunityTriggerHandler.beforeUpdate(Trigger.newMap, Trigger.oldMap);
         }
         if(Trigger.isDelete){
             OpportunityTriggerHandler.beforeDelete(Trigger.old);
@@ -14,11 +21,12 @@ trigger OpportunityTrigger on Opportunity (after update, before delete) {
         if (Trigger.isInsert){
             //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.new);
             //feb26MorningSync.updateOpportunityCountOnUser(Trigger.new);
+            OpportunityTriggerHandler.afterinsert(Trigger.newMap,Trigger.oldMap);
         }
         if(Trigger.isUpdate) {
             //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.new);
             //feb26MorningSync.updateOpportunityCountOnUser(Trigger.new);
-            OpportunityTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap);
+            OpportunityTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap, Trigger.newMap);
         }
         if (Trigger.isDelete) {
             //feb26MorningSync.updateOpportunityCountOnAccount(Trigger.old);
