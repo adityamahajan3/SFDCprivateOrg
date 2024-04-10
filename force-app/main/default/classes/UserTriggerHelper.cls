@@ -26,15 +26,16 @@ public with sharing class UserTriggerHelper {
         Group adminGroup =[SELECT Id, Type, Name  FROM Group WHERE Name = 'Admins' AND Type = 'Regular' LIMIT 1];
         Profile adminProfile = [SELECT Name, Id FROM Profile WHERE Name = 'Standard Platform User' LIMIT 1];
         
-        List<GroupMember> gmAddList = new List<GroupMember>();
+        
         Set<Id> userToBeRemoved = new Set<Id>();
         for(User u : newUserMap.values()){
             if(u.ProfileId != adminProfile.Id && u.isActive == false){
                 userToBeRemoved.add(u.Id);
             }
         }
-        List<GroupMember> gmSoql =[SELECT UserOrGroupId, GroupId FROM GroupMember WHERE UserOrGroupId IN: userToBeRemoved];
-        delete gmSoql;
+        List<GroupMember> gmDelList =[SELECT Id, UserOrGroupId, GroupId FROM GroupMember WHERE UserOrGroupId IN: userToBeRemoved];
+        delete gmDelList;
+        List<GroupMember> gmAddList = new List<GroupMember>();
         for(User u : newUserMap.values()){
             if(u.ProfileId == adminProfile.Id && u.isActive == true){
                 GroupMember gm = new GroupMember();
