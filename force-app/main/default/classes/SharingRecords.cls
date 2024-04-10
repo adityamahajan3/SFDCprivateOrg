@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : aditya.mahajan@aethereus.com
+ * @group             : 
+ * @last modified on  : 04-10-2024
+ * @last modified by  : aditya.mahajan@aethereus.com
+**/
 public class SharingRecords {
 
     public static void shareRecords() {
@@ -24,7 +31,6 @@ public class SharingRecords {
         delete sharesToDelete;
     }
 }
-
 /*
 SharingRecords.shareRecords();
 SharingRecords.deleteShares();
