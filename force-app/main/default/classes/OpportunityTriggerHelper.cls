@@ -6,7 +6,7 @@
  * @last modified by  : aditya.mahajan@aethereus.com
 **/
 public with sharing class OpportunityTriggerHelper {
-/*5)Write a trigger, only admin can delete closed opportunities */
+    /*5)Write a trigger, only admin can delete closed opportunities */
     public static void adminDeletesClosedOpp(List<Opportunity> oldOppList) {
         if(Trigger.isDelete){
             Set<Id> adminId = new Set<Id>();
