@@ -63,7 +63,7 @@ public with sharing class OpportunityTriggerHelper {
     /* in this case an opportunity Stage cannot be updated to "Closed Won" if its old amount or new amount is less than 10,000*/
     public static void opportunityValidationTrigger(Map<Id,Opportunity> newOppMap, Map<Id,Opportunity> oldOppMap){
         for(Opportunity o : oldOppMap.values()){
-            if((o.Amount<10000 || newOppMap.get(o.Id).Amount<10000) && (o.StageName=='Closed Won' || newOppMap.get(o.Id).StageName=='Closed Won'))
+            if((o.Amount<10000 || newOppMap.get(o.Id).Amount<10000) && (newOppMap.get(o.Id).StageName=='Closed Won'))
             {
                 o.addError('Opportunity Amount cannot be less than 10,000 if it is to be updated to Closed Won');
             }
